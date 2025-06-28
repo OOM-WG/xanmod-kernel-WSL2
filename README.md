@@ -1,5 +1,24 @@
 #### 适用于 WSL2 的非官方内核。fork自 [Locietta/xanmod-kernel-WSL2](https://github.com/Locietta/xanmod-kernel-WSL2)，进行了部分修改。  
-#### 相对于原始项目的修改：
+
+#### Xanmod 内核相对于原版内核的增强之处（AI收集）
+- 优化了核心和进程调度、负载均衡、缓存、虚拟内存管理、CPU频率调节器（针对重型工作负载）
+- 增强块层以实现高IOPS吞吐量
+- 使用LLVM Clang的高级内核构建优化
+- 使用ORC Unwinder改进调试
+- 使用Google的多代LRU框架进行高级内存管理
+- 支持实时内核（PREEMPT_RT）
+- 支持进程调度器如sched_ext (SCX)
+- AMD 3D V-Cache优化器驱动
+- Cloudflare的TCP折叠处理（提高网络性能）
+- Google的BBRv3 TCP拥塞控制
+- Netfilter增强（NAT和数据包处理）
+- NT同步原语仿真驱动
+- PCIe ACS Override（提高硬件兼容性）
+- Graysky的额外CPU选项
+- 部分Clear Linux补丁集
+- Android Binder IPC驱动（用于Waydroid）
+
+#### 本fork相对于上游仓库的修改：
 - 在 MAIN 分支添加了更多 zram 压缩算法
 - 增加了针对 raptorlake 和 alderlake 处理器的编译
 - 停止了自动工作流，改为通过 star 或手动触发
