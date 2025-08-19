@@ -40,6 +40,8 @@ jobs:
             image-name: bzImage-alderlake
           - arch: MRAPTORLAKE
             image-name: bzImage-raptorlake
+          - arch: MZEN4
+            image-name: bzImage-zen4
 
     steps:
       - uses: actions/checkout@main
@@ -178,11 +180,14 @@ jobs:
             最新的用于 WSL2 的 XanMod ${{ inputs.branch }} 内核，使用 ${{ needs.build.outputs.clang_version }} 编译。
             通过 GitHub Action 的矩阵构建功能提供不同架构的构建。
 
-            * `bzImage-x64v3` 现代处理器通用，需支持x86_64-v3
-            * `bzImage-alderlake` 用于 intel alderlake
-            * `bzImage-raptorlake` 用于 intel raptorlake
+            | 镜像名称              | 说明                                   |
+            | ------------------- | -------------------------------------- |
+            | `bzImage-x64v3`     | 现代处理器通用，需支持 x86_64-v3           |
+            | `bzImage-alderlake` | 针对 12代 Intel Alder Lake (如i7-12650h) |
+            | `bzImage-raptorlake`| 针对 13代 Intel Raptor Lake             |
+            | `bzImage-zen4`      | 针对 AMD Zen 4（如 AMD R7-8845H）        |
 
-            如果非 LTS 版出现卡死等异常，可尝试LTS版本。
+            **如果非 LTS 版出现卡死等异常，可尝试LTS版本。**
             要检查您的机器支持的 x86_64 级别，请参阅[如何检查硬件支持的 x86_64 级别](https://unix.stackexchange.com/questions/631217/how-do-i-check-if-my-cpu-supports-x86-64-v2?msclkid=42ca61e9aa7111ecbcab7bb1a4204357)。
 
           files: |
